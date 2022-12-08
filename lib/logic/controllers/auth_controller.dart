@@ -121,7 +121,8 @@ class AuthController extends GetxController
       isSignedIn = true;
       authBox.write("auth", isSignedIn);
       update();
-      Get.offNamed(Routes.profileScreen);
+      Get.toNamed(Routes.stockScreen);
+
       //getEmailDoc();
     } on FirebaseAuthException catch (error) {
       String title = error.code.replaceAll(RegExp('-'), ' ').capitalize!;
@@ -195,7 +196,7 @@ class AuthController extends GetxController
       update();
       authBox.write("auth", isSignedIn);
 
-      Get.offNamed(Routes.profileScreen);
+      Get.toNamed(Routes.customerHome);
     } catch (error) {
       Get.snackbar('Error!', error.toString(),
           snackPosition: SnackPosition.TOP,
@@ -252,7 +253,7 @@ class AuthController extends GetxController
       });
 
       update();
-      Get.offNamed(Routes.profileScreen);
+      Get.toNamed(Routes.customerHome);
       // getEmailDoc();
     } on FirebaseAuthException catch (e) {
       String title = e.code.replaceAll(RegExp('-'), ' ').capitalize!;
