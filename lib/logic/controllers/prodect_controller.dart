@@ -17,7 +17,12 @@ class ProdectController extends GetxController {
       productQuantityController,
       productPriceController,
       productDescriptionController;
+  PageController myPage = PageController(initialPage: 0);
 
+  void pages(value){
+    myPage.jumpToPage(value);
+    update();
+  }
   File? pickedFile;
   String imgUrl = "";
   final imagePicker = ImagePicker();

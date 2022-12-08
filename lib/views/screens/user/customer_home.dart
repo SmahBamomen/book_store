@@ -10,8 +10,140 @@ import '../../widgets/user/favourites/prodects_favourites.dart';
 class CustomerHome extends StatelessWidget {
   CustomerHome({Key? key}) : super(key: key);
   final controller = Get.put(ProdectController());
+
   @override
   Widget build(BuildContext context) {
+    return GetBuilder<ProdectController>(builder: (_){
+      return  Scaffold(
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: BottomAppBar(
+          shape: CircularNotchedRectangle(),
+          child: Container(
+            height: 75,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                IconButton(
+                  iconSize: 30.0,
+                  padding: EdgeInsets.only(left: 28.0),
+                  icon: Icon(Icons.home),
+                  onPressed: () {
+                    controller.pages(0);
+                    // setState(() {
+                    //   _myPage.jumpToPage(0);
+                    // });
+                  },
+                ),
+                IconButton(
+                  iconSize: 30.0,
+                  padding: EdgeInsets.only(right: 28.0),
+                  icon: Icon(Icons.search),
+                  onPressed: () {
+                    controller.pages(1);
+                    // setState(() {
+                    //   _myPage.jumpToPage(1);
+                    // });
+                  },
+                ),
+                IconButton(
+                  iconSize: 30.0,
+                  padding: EdgeInsets.only(left: 28.0),
+                  icon: Icon(Icons.favorite),
+                  onPressed: () {
+                    controller.pages(2);
+                    // setState(() {
+                    //   _myPage.jumpToPage(2);
+                    // });
+                  },
+                ),
+                IconButton(
+                  iconSize: 30.0,
+                  padding: EdgeInsets.only(right: 28.0),
+                  icon: Icon(Icons.person),
+                  onPressed: () {
+                    controller.pages(3);
+                    // setState(() {
+                    //   _myPage.jumpToPage(3);
+                    // });
+                  },
+                )
+              ],
+            ),
+          ),
+        ),
+        body: PageView(
+          controller: controller.myPage,
+          onPageChanged: (int) {
+            print('Page Changes to index $int');
+          },
+          children: <Widget>[
+            Column(
+              children: [
+                SizedBox(
+                  height: 10,
+                ),
+                StreamBuilder(
+                  stream: controller.getData,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      controller.prodects = snapshot.data!.docs
+                          .map((e) => Prodect(
+                          productNumber: e['productNumber'],
+                          productName: e['productName'],
+                          category: e['category'],
+                          quantity: e['quantity'],
+                          price: e['price'],
+                          description: e['description'],
+                          imageUrl: e['imageUrl']))
+                          .toList();
+
+                      print('leeength ${controller.prodects.length}');
+                      if (controller.prodects.isNotEmpty) {
+                        return CardItem(prodects: controller.prodects);
+                      } else {
+                        return Text("No thing");
+                      }
+                    } else {
+                      return CardItem(prodects: controller.prodects);
+                    }
+                  },
+                ),
+              ],
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 100),
+                child: SearchProducts()),
+            Center(
+              child: Container(
+                child: Text('Empty Body 2'),
+              ),
+            ),
+            Center(
+              child: Container(
+                child: Text('Empty Body 3'),
+              ),
+            )
+          ],
+          physics: NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.
+        ),
+        floatingActionButton: Container(
+          height: 65.0,
+          width: 65.0,
+          child: FittedBox(
+            child: FloatingActionButton(
+              onPressed: () {},
+              child: Icon(
+                Icons.shopping_basket_outlined,
+                color: Colors.white,
+              ),
+              // elevation: 5.0,
+            ),
+          ),
+        ),
+      );
+    });
+
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
       appBar: AppBar(

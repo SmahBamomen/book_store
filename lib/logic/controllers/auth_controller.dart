@@ -381,23 +381,6 @@ class AuthController extends GetxController
   }
 
 
-  // Future<void> googleSignUpApp() async {
-  //   try {
-  //     final googleUser = await googleSign.signIn();
-
-  //     isSignedIn = true;
-  //     update();
-  //     Get.offNamed(Routes.profileScreen);
-  //   } catch (error) {
-  //     Get.snackbar(
-  //       'Error!',
-  //       error.toString(),
-  //       snackPosition: SnackPosition.TOP,
-  //       backgroundColor: Colors.red[400],
-  //       colorText: Colors.white,
-  //     );
-  //   }
-  // }
 
   Future updateFields(TextEditingController value, TextEditingController value1,
       String imageUrl) async {
