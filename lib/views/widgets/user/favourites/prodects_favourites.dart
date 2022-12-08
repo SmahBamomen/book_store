@@ -11,21 +11,9 @@ class prodectsFavourites extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          toolbarHeight: 145,
-          iconTheme: IconThemeData(color: Colors.black),
-          title: Container(
-              //margin: EdgeInsets.only(top: 20),
-              child: Text(
-            "Favorite",
-            style: TextStyle(color: Colors.black),
-          )),
-          elevation: 0,
-          centerTitle: true,
-        ),
-        body: controller.favouritesList.isNotEmpty
+    return Container(
+
+        child: controller.favouritesList.isNotEmpty
             ? ListView.builder(
                 itemCount: controller.favouritesList.length,
                 itemBuilder: ((context, index) {
@@ -47,7 +35,7 @@ class prodectsFavourites extends StatelessWidget {
                               borderRadius: BorderRadius.circular(4),
                               image: DecorationImage(
                                   image: NetworkImage(
-                                      '${controller.favouritesList[index]['imageUrl']}'),
+                                      '${controller.favouritesList[index].imageUrl}'),
                                   fit: BoxFit.cover)),
                         ),
                         SizedBox(
@@ -62,7 +50,7 @@ class prodectsFavourites extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     Text(
-                                      "${controller.favouritesList[index]['productName']}",
+                                      "${controller.favouritesList[index].productName}",
                                       style: TextStyle(
                                           overflow: TextOverflow.ellipsis,
                                           fontSize: 12,
@@ -77,7 +65,7 @@ class prodectsFavourites extends StatelessWidget {
                                 height: 3,
                               ),
                               Text(
-                                "${controller.favouritesList[index]['category']}",
+                                "${controller.favouritesList[index].category}",
                                 style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w300,
@@ -94,7 +82,7 @@ class prodectsFavourites extends StatelessWidget {
                               ),
                               Row(children: [
                                 Text(
-                                    "\$${controller.favouritesList[index]['price']}",
+                                    "\$${controller.favouritesList[index].price}",
                                     style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500,

@@ -3,6 +3,7 @@ import 'package:book_store/model/product.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../utils/text_utils.dart';
 import '../../widgets/SearchProducts.dart';
 import '../../widgets/user/cart_item_customer.dart';
 import '../../widgets/user/favourites/prodects_favourites.dart';
@@ -16,6 +17,17 @@ class CustomerHome extends StatelessWidget {
     return GetBuilder<ProdectController>(builder: (_){
       return  Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: TextUtils(
+            text: 'Book Store',
+            color:Colors.black,
+            fontWeight:FontWeight.bold,
+              fontsize:22,
+          ),
+        ),
         bottomNavigationBar: BottomAppBar(
           shape: CircularNotchedRectangle(),
           child: Container(
@@ -87,25 +99,15 @@ class CustomerHome extends StatelessWidget {
                   stream: controller.getData,
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      controller.prodects = snapshot.data!.docs
-                          .map((e) => Prodect(
-                          productNumber: e['productNumber'],
-                          productName: e['productName'],
-                          category: e['category'],
-                          quantity: e['quantity'],
-                          price: e['price'],
-                          description: e['description'],
-                          imageUrl: e['imageUrl']))
-                          .toList();
+                      controller.prodects = controller.productList;
 
-                      print('leeength ${controller.prodects.length}');
                       if (controller.prodects.isNotEmpty) {
-                        return CardItem(prodects: controller.prodects);
+                        return CardItem(prodects: controller.productList);
                       } else {
                         return Text("No thing");
                       }
                     } else {
-                      return CardItem(prodects: controller.prodects);
+                      return CardItem(prodects: controller.productList);
                     }
                   },
                 ),
@@ -114,11 +116,7 @@ class CustomerHome extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(top: 100),
                 child: SearchProducts()),
-            Center(
-              child: Container(
-                child: Text('Empty Body 2'),
-              ),
-            ),
+            prodectsFavourites(),
             Center(
               child: Container(
                 child: Text('Empty Body 3'),
@@ -179,7 +177,7 @@ class CustomerHome extends StatelessWidget {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 controller.prodects = snapshot.data!.docs
-                    .map((e) => Prodect(
+                    .map((e) => Product(
                         productNumber: e['productNumber'],
                         productName: e['productName'],
                         category: e['category'],

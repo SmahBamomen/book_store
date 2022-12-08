@@ -4,12 +4,12 @@
 
 import 'dart:convert';
 
-Prodect prodectFromJson(String str) => Prodect.fromJson(json.decode(str));
+Product prodectFromJson(String str) => Product.fromJson(json.decode(str));
 
-String prodectToJson(Prodect data) => json.encode(data.toJson());
+String prodectToJson(Product data) => json.encode(data.toJson());
 
-class Prodect {
-  Prodect({
+class Product {
+  Product({
     this.productNumber,
     required this.productName,
     required this.category,
@@ -27,7 +27,7 @@ class Prodect {
   final String description;
   String imageUrl;
 
-  factory Prodect.fromJson(Map<String, dynamic> json) => Prodect(
+  factory Product.fromJson(Map<String, dynamic> json) => Product(
         productNumber: json["productNumber"],
         productName: json["productName"],
         category: json["category"],

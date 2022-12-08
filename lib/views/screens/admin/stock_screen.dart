@@ -47,7 +47,7 @@ class StockScreen extends StatelessWidget {
               if (snapshot.hasData) {
                 print("not empty screen");
                 controller.prodects = snapshot.data!.docs
-                    .map((e) => Prodect(
+                    .map((e) => Product(
                         productNumber: e['productNumber'],
                         productName: e['productName'],
                         description: e['description'],

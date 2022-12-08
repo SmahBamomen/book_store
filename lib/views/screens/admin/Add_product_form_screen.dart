@@ -43,7 +43,7 @@ class AddProductFromScreen extends StatelessWidget {
             return TextButton(
               onPressed: () async {
                 if (myKey.currentState!.validate()) {
-                  Prodect product = Prodect(
+                  Product product = Product(
                       productName: controller.productNameControlller.text,
                       category: controller.productCategoryController.text,
                       quantity:
