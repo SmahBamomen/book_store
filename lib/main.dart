@@ -31,12 +31,9 @@ class MyApp extends StatelessWidget {
 
           initialRoute: FirebaseAuth.instance.currentUser != null ||
               GetStorage().read<bool>("auth") == true
-              ? Routes.profileScreen
+              ? Routes.customerHome
               : AppRoutes.login,
-
-          //  initialRoute: Routes.loginScreen,
-
-          getPages: AppRoutes.routes,
+  getPages: AppRoutes.routes,
           initialBinding: AppBinding(),
         );
       },

@@ -3,9 +3,6 @@ import 'package:book_store/views/screens/admin/Add_product_form_screen.dart';
 import 'package:book_store/views/screens/admin/stock_screen.dart';
 import 'package:book_store/views/screens/forgot_password_screen.dart';
 import 'package:book_store/views/screens/login_screen.dart';
-import 'package:book_store/views/screens/setting/edit_profile_screen.dart';
-import 'package:book_store/views/screens/setting/profile_screen.dart';
-import 'package:book_store/views/screens/setting/setting_screen.dart';
 import 'package:book_store/views/screens/signup_screen.dart';
 import 'package:book_store/views/screens/user/customer_home.dart';
 import 'package:get/route_manager.dart';
@@ -31,18 +28,7 @@ class AppRoutes {
         name: Routes.forgotpasswordScreen,
         page: () => ForgotPasswordScreen(),
         binding: AppBinding()),
-    GetPage(
-        name: Routes.profileScreen,
-        page: () => ProfileScreen(),
-        binding: AppBinding()),
-    GetPage(
-        name: Routes.editProfileScreen,
-        page: () => EditProfileScreen(),
-        binding: AppBinding()),
-    GetPage(
-        name: Routes.settingsScreen,
-        page: () => SettingScreen(),
-        binding: AppBinding()),
+
 
     GetPage(name: Routes.stockScreen, page: () => StockScreen()),
     GetPage(name: Routes.addProductForm, page: () => AddProductFromScreen()),
