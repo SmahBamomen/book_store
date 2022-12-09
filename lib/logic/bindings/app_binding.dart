@@ -1,3 +1,4 @@
+import 'package:book_store/logic/controllers/cart_controller.dart';
 import 'package:book_store/logic/controllers/prodect_controller.dart';
 import 'package:book_store/logic/controllers/responsive_ui_controller.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,6 @@ class AppBinding extends Bindings {
     Get.put(AuthController());
     Get.put<ResponsiveUiController>(ResponsiveUiController());
     Get.put<ProdectController>(ProdectController());
-
+    Get.put<CartController>(CartController());
   }
 }

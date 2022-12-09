@@ -1,5 +1,7 @@
 import 'package:book_store/logic/controllers/prodect_controller.dart';
 import 'package:book_store/model/product.dart';
+import 'package:book_store/views/widgets/user/cart_screen.dart';
+import 'package:book_store/views/widgets/user/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -89,30 +91,8 @@ class CustomerHome extends StatelessWidget {
           onPageChanged: (int) {
             print('Page Changes to index $int');
           },
-          children: <Widget>[
-            Column(
-              children: [
-                SizedBox(
-                  height: 10,
-                ),
-                StreamBuilder(
-                  stream: controller.getData,
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      controller.prodects = controller.productList;
-
-                      if (controller.prodects.isNotEmpty) {
-                        return CardItem(prodects: controller.productList);
-                      } else {
-                        return Text("No thing");
-                      }
-                    } else {
-                      return CardItem(prodects: controller.productList);
-                    }
-                  },
-                ),
-              ],
-            ),
+          children: <Widget> [
+            HomeScreen(),
             Container(
               margin: EdgeInsets.only(top: 100),
                 child: SearchProducts()),
@@ -121,7 +101,8 @@ class CustomerHome extends StatelessWidget {
               child: Container(
                 child: Text('Empty Body 3'),
               ),
-            )
+            ),
+
           ],
           physics: NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.
         ),
@@ -130,7 +111,9 @@ class CustomerHome extends StatelessWidget {
           width: 65.0,
           child: FittedBox(
             child: FloatingActionButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.to(() =>  CartScreen());
+              },
               child: Icon(
                 Icons.shopping_basket_outlined,
                 color: Colors.white,

@@ -1,4 +1,6 @@
+import 'package:book_store/logic/controllers/cart_controller.dart';
 import 'package:book_store/logic/controllers/prodect_controller.dart';
+import 'package:book_store/model/product.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,7 +11,7 @@ class CardItem extends StatelessWidget {
   List prodects = [];
 
   CardItem({Key? key, required this.prodects}) : super(key: key);
-
+  final cartController = Get.find<CartController>();
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -137,7 +139,11 @@ class CardItem extends StatelessWidget {
                                 ),
                               ),
                               IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    cartController.addProductToCrt(prodects[index]);
+
+
+                                  },
                                   icon: Icon(Icons.shopping_cart_outlined)),
                             ],
                           ),

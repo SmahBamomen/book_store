@@ -5,6 +5,7 @@ import 'package:book_store/views/screens/forgot_password_screen.dart';
 import 'package:book_store/views/screens/login_screen.dart';
 import 'package:book_store/views/screens/signup_screen.dart';
 import 'package:book_store/views/screens/user/customer_home.dart';
+import 'package:book_store/views/widgets/user/cart_screen.dart';
 import 'package:get/route_manager.dart';
 
 import 'logic/bindings/app_binding.dart';
@@ -33,6 +34,7 @@ class AppRoutes {
     GetPage(name: Routes.stockScreen, page: () => StockScreen()),
     GetPage(name: Routes.addProductForm, page: () => AddProductFromScreen()),
     GetPage(name: Routes.customerHome, page: () => CustomerHome()),
+    GetPage(name: Routes.cartScreen, page: () => CartScreen()),
   ];
 }
 
@@ -48,4 +50,5 @@ class Routes {
   static const editProduct = '/EditProductScreen';
   static const customerHome = '/CustomerHome';
   static const settingsScreen = '/settingsScreen';
+  static const cartScreen = '/cartScreen';
 }
