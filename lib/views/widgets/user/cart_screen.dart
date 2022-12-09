@@ -2,6 +2,7 @@ import 'package:book_store/logic/controllers/cart_controller.dart';
 import 'package:book_store/model/product.dart';
 import 'package:book_store/routes.dart';
 import 'package:book_store/utils/text_utils.dart';
+import 'package:book_store/views/screens/user/main_payment_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -110,7 +111,10 @@ class CartTotal extends StatelessWidget {
                         primary: Colors.black,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15))),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => const MainPaymentScreen());
+
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [

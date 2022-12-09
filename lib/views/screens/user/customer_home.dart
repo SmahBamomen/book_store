@@ -45,9 +45,7 @@ class CustomerHome extends StatelessWidget {
                   icon: Icon(Icons.home),
                   onPressed: () {
                     controller.pages(0);
-                    // setState(() {
-                    //   _myPage.jumpToPage(0);
-                    // });
+
                   },
                 ),
                 IconButton(
@@ -56,9 +54,7 @@ class CustomerHome extends StatelessWidget {
                   icon: Icon(Icons.search),
                   onPressed: () {
                     controller.pages(1);
-                    // setState(() {
-                    //   _myPage.jumpToPage(1);
-                    // });
+
                   },
                 ),
                 IconButton(
@@ -67,9 +63,7 @@ class CustomerHome extends StatelessWidget {
                   icon: Icon(Icons.favorite),
                   onPressed: () {
                     controller.pages(2);
-                    // setState(() {
-                    //   _myPage.jumpToPage(2);
-                    // });
+
                   },
                 ),
                 IconButton(
@@ -78,9 +72,7 @@ class CustomerHome extends StatelessWidget {
                   icon: Icon(Icons.person),
                   onPressed: () {
                     controller.pages(3);
-                    // setState(() {
-                    //   _myPage.jumpToPage(3);
-                    // });
+
                   },
                 )
               ],
@@ -122,64 +114,6 @@ class CustomerHome extends StatelessWidget {
       );
     });
 
-    return Scaffold(
-      backgroundColor: Colors.grey.shade300,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-        toolbarHeight: 145,
-        iconTheme: IconThemeData(color: Colors.black),
-        title: Container(
-            //margin: EdgeInsets.only(top: 20),
-            child: SearchProducts()),
-        elevation: 0,
-        centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {
-              print(controller.favouritesList);
-              Get.to(prodectsFavourites());
-            },
-            icon: Icon(
-              Icons.favorite_border_outlined,
-              color: Colors.black,
-            ),
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 10,
-          ),
-          StreamBuilder(
-            stream: controller.getData,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                controller.prodects = snapshot.data!.docs
-                    .map((e) => Product(
-                        productNumber: e['productNumber'],
-                        productName: e['productName'],
-                        category: e['category'],
-                        quantity: e['quantity'],
-                        price: e['price'],
-                        description: e['description'],
-                        imageUrl: e['imageUrl']))
-                    .toList();
 
-                print('leeength ${controller.prodects.length}');
-                if (controller.prodects.isNotEmpty) {
-                  return CardItem(prodects: controller.prodects);
-                } else {
-                  return Text("No thing");
-                }
-              } else {
-                return CardItem(prodects: controller.prodects);
-              }
-            },
-          ),
-        ],
-      ),
-    );
   }
 }
