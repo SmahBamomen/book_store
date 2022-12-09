@@ -1,5 +1,6 @@
 import 'package:book_store/logic/controllers/prodect_controller.dart';
 import 'package:book_store/model/product.dart';
+import 'package:book_store/views/screens/setting/profile_screen.dart';
 import 'package:book_store/views/widgets/user/cart_screen.dart';
 import 'package:book_store/views/widgets/user/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -97,11 +98,7 @@ class CustomerHome extends StatelessWidget {
               margin: EdgeInsets.only(top: 100),
                 child: SearchProducts()),
             prodectsFavourites(),
-            Center(
-              child: Container(
-                child: Text('Empty Body 3'),
-              ),
-            ),
+            ProfileScreen()
 
           ],
           physics: NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.
